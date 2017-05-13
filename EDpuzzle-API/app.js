@@ -14,6 +14,13 @@ var media = require('./routes/media');
 
 var app = express();
 
+
+var cors = require('cors');
+var corsOptions = {credentials: true, origin: 'http://localhost:3000'};
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

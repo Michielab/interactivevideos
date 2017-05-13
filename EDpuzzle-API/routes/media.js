@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
       next(err);
       return;
     }
+    console.log(media[0].title);
     res.json({media});
   });
 

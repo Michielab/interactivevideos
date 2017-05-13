@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const questionSchema = new Schema({
-
+body: String
 });
 
 const Question = mongoose.model("Question", questionSchema);
