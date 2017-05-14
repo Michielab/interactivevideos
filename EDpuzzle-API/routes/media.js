@@ -7,7 +7,7 @@ const Media = require("../models/media")
 /* Question model. */
 const Question = require("../models/questions")
 
-/* GET media. */
+/* GET all media. */
 router.get('/', function(req, res, next) {
   Media
   .find({})
@@ -17,12 +17,26 @@ router.get('/', function(req, res, next) {
       next(err);
       return;
     }
-    console.log(media[0].title);
     res.json({media});
   });
 
 });
 
+/* GET one media. */
+router.get('/:id', function(req, res, next) {
+  var mediaId = req.params.id;
+  Media
+  .find({_id: mediaId})
+  .populate("questions.questionId")
+  .exec((err, media) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.json({media});
+  });
+
+});
 
 
 module.exports = router;
