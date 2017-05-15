@@ -22,21 +22,6 @@ router.get('/', function(req, res, next) {
 
 });
 
-/* GET one media. */
-router.get('/:id', function(req, res, next) {
-  var mediaId = req.params.id;
-  Media
-  .find({_id: mediaId})
-  .populate("questions.questionId")
-  .exec((err, media) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.json({media});
-  });
-
-});
 
 
 module.exports = router;

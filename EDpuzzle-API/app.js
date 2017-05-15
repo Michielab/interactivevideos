@@ -9,7 +9,6 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://developer:edpuzzle@candidate.63.mongolayer.com:10327,candidate.64.mongolayer.com:10154/developer-test-michiel?replicaSet=set-56aa50c0ad4b0861c2000532');
 
 
-var index = require('./routes/index');
 var media = require('./routes/media');
 
 var app = express();
@@ -33,7 +32,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
 app.use('/media', media);
 
 // catch 404 and forward to error handler
