@@ -9,37 +9,38 @@ class Allvideos extends Component {
 
     this.state = {
       media: [],
-      // selectedVideo: media
+      selectedVideo: {}
     };
   }
 
-
+//get all the video's with GET request to API
 componentWillMount(){
   axios.get("http://localhost:4000/media").then(response => {
     this.setState({ media: response.data.media });
+    this.setState({ selectedVideo: response.data.media[0]});
   });
-
   }
 
-
-callback(event){
-
+//method to select video
+selectVideo(video){
+  this.setState({selectedVideo: video});
 }
 
   render () {
-      console.log(this.state.media);
     return (
       <div>
         <ul>
           {this.state.media.map(media =>
-            <li key={media._id} >{media.title}</li>
+            <button key={media._id} onClick={()=>{this.selectVideo(media)}}>{media._id}</button>
           )}
         </ul>
-        <Singlevideo />
+        <Singlevideo video={this.state.selectedVideo} />
       </div>
     )
 
   }
 }
+
+
 
 export default Allvideos;
