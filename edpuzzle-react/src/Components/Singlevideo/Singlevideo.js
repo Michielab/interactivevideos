@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+
+
+
 
 class Singlevideo extends Component {
 
 
-
-
-
   render () {
+    let videoUrl = "https://www.youtube.com/embed/" + this.props.video;
+
     return (
       <div>
-        <p>{this.props.video.title}</p>
+        <iframe width="200" height="300" src={videoUrl}></iframe>
       </div>
     )
 

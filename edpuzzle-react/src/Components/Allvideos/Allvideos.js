@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Singlevideo from '../Singlevideo/Singlevideo'
 
+var url = "http://img.youtube.com/vi/"
 
 class Allvideos extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class Allvideos extends Component {
 
     this.state = {
       media: [],
-      selectedVideo: {}
+      selectedVideo: String,
+      duration: {}
     };
   }
 
@@ -17,9 +19,18 @@ class Allvideos extends Component {
 componentWillMount(){
   axios.get("http://localhost:4000/media").then(response => {
     this.setState({ media: response.data.media });
-    this.setState({ selectedVideo: response.data.media[0]});
+    this.setState({ selectedVideo: response.data.media[0].videoId});
   });
-  }
+
+}
+
+// getDuration(e){
+// axios.get("https://www.googleapis.com/youtube/v3/videos?id="+ e + "&key=AIzaSyCxMMKO3pvhEwyCb6XzpvyyA7mT7W5HxNE&part=snippet,contentDetails,statistics,status").then(response => {
+//   return response.data.items[0].contentDetails.duration
+// });
+// }
+// <span>{this.getDuration(media.videoId)}</span>
+
 
 //method to select video
 selectVideo(video){
@@ -27,20 +38,19 @@ selectVideo(video){
 }
 
   render () {
+
     return (
       <div>
         <ul>
           {this.state.media.map(media =>
-            <button key={media._id} onClick={()=>{this.selectVideo(media)}}>{media._id}</button>
-          )}
+            <div key={media._id} onClick={()=>{this.selectVideo(media.videoId)}}><img alt=""src={url + media.videoId + "/1.jpg" }></img></div>
+        )}
         </ul>
         <Singlevideo video={this.state.selectedVideo} />
-      </div>
+    </div>
     )
 
   }
 }
-
-
 
 export default Allvideos;
