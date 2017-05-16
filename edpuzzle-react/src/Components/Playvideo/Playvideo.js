@@ -29,7 +29,8 @@ class Playvideo extends Component {
   render () {
     return (
       <div>
-      <iframe  id="test" width="200" height="300" src={`https://www.youtube.com/embed/${this.props.video.videoId}?enablejsapi=1`}></iframe>
+      <iframe  width="840" height="560" src={`https://www.youtube.com/embed/${this.props.video.videoId}?enablejsapi=1`}></iframe>
+      <h3>{this.props.video.author} - {this.props.video.title}</h3>
     </div>
     )
 

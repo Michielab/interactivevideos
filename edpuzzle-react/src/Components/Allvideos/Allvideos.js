@@ -30,15 +30,15 @@ selectVideo(video){
 
   render () {
     return (
-      <div>
-        <ul>
+      <div className="row" >
+        <div className="col-md-4" >
           {this.state.media.map(video=>
             {if(video.videoId !== "D8UQJIjcZfA"){
           return <Singlevideo key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
           }}
         )}
-        </ul>
-        <Playvideo video={this.state.selectedVideo} />
+      </div>
+        <Playvideo className="col-md-8"  className="center" video={this.state.selectedVideo} />
     </div>
     )
 
