@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Singlevideo from '../Singlevideo/Singlevideo'
-
+import Playvideo from '../Playvideo/Playvideo'
 
 class Allvideos extends Component {
   constructor(props) {
@@ -9,35 +9,21 @@ class Allvideos extends Component {
 
     this.state = {
       media: [],
-      selectedVideo: String,
-      duration: []
+      selectedVideo: {}
     };
+
+    this.selectVideo = this.selectVideo.bind(this);
   }
 
 //get all the video's with GET request to API
 componentWillMount(){
   axios.get("http://localhost:4000/media").then(response => {
-    this.setState({ media: response.data.media, selectedVideo: response.data.media[0].videoId });
+    this.setState({ media: response.data.media, selectedVideo: response.data.media[0]});
   })
   .catch(function(error){console.log(error);});
-
-  // setTimeout(()=>{ this.state.media.forEach(function(e){
-  // axios.get("https://www.googleapis.com/youtube/v3/videos?id="+ e.videoId + "&key=AIzaSyCxMMKO3pvhEwyCb6XzpvyyA7mT7W5HxNE&part=snippet,contentDetails,statistics,status").then(response => {
-  //  response.data.items[0].contentDetails.duration)}
-  // });
-  // }, 3000);
-
 }
 
-
-// getDuration(e){
-// setTimeout(function(){ axios.get("https://www.googleapis.com/youtube/v3/videos?id="+ e + "&key=AIzaSyCxMMKO3pvhEwyCb6XzpvyyA7mT7W5HxNE&part=snippet,contentDetails,statistics,status").then(response => {
-//   document.getElementById("e").innerHTML = response.data.items[0].contentDetails.duration
-// });}, 3000);
-
-
-
-//method to select video
+// method to select video
 selectVideo(video){
   this.setState({selectedVideo: video});
 }
@@ -46,13 +32,13 @@ selectVideo(video){
     return (
       <div>
         <ul>
-          {this.state.media.map(media =>
-            <div key={media._id} onClick={()=>{this.selectVideo(media.videoId)}}>
-               <img alt=""src={`http://img.youtube.com/vi/${media.videoId}/1.jpg`}></img>
-               </div>
+          {this.state.media.map(video=>
+            {if(video.videoId !== "D8UQJIjcZfA"){
+          return <Singlevideo key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
+          }}
         )}
         </ul>
-        <Singlevideo video={this.state.selectedVideo} />
+        <Playvideo video={this.state.selectedVideo} />
     </div>
     )
 
