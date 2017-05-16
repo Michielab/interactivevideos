@@ -1,39 +1,49 @@
 import React, { Component } from 'react';
+import YouTube from 'react-youtube';
 
-
+  var countSeconds;
 class Playvideo extends Component {
   constructor(props) {
     super(props);
-// this.ready = this.ready.bind(this);
+this._onPlay = this._onPlay.bind(this);
+// this._onReady = this._onReady.bind(this);
   }
 
 
-
-// ready(){
-//   console.log("bjkhdkjfs");
-//   if(this.player.getPlayerState() === 1) {
-//    countSeconds = setInterval(function(){
-//     console.log(Math.round(this.player.getCurrentTime()));
-//   },1000)}
-//  else if (this.player.getPlayerState() === 2) {
-//      clearInterval(countSeconds)
+// _onReady(event) {
+// if(this.props.video.questions[0].time == 0) {alert(this.props.video.questions[0].questionId.body)};
 //   }
 
+_onPlay(event) {
+  countSeconds = setInterval(()=>{
+    this.props.video.questions.forEach((question)=>{
+        console.log(question.time);
+        if(Math.round(event.target.getCurrentTime()) === question.time) {
+            console.log(event);
+            event.target.pauseVideo();
+            alert(question.questionId.body);
+        }
+      })
+},1000);
+}
 
-  // console.log(this.props.video.questions[0].time);
-  // console.log(this.player.getPlayerState())
-  // console.log(this.player.getCurrentTime());
-  // console.log("iframe");
-// }
+_onPause(event) {
+ clearInterval(countSeconds);
+}
+
 
   render () {
+    const opts = {
+      height: '390',
+      width: '640'
+    };
+
     return (
       <div>
-      <iframe  width="840" height="560" src={`https://www.youtube.com/embed/${this.props.video.videoId}?enablejsapi=1`}></iframe>
+        <YouTube videoId={this.props.video.videoId} opts={opts} onPause={this._onPause} onPlay={this._onPlay}/>
       <h3>{this.props.video.author} - {this.props.video.title}</h3>
     </div>
     )
-
   }
 }
 
