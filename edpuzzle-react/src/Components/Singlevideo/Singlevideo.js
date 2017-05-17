@@ -13,7 +13,8 @@ class Singlevideo extends Component {
   componentWillMount(){
     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${this.props.video.videoId}&key=AIzaSyCxMMKO3pvhEwyCb6XzpvyyA7mT7W5HxNE&part=snippet,contentDetails,statistics,status`).then(response => {
      if(response.data.items.length !== 0){
-     this.setState({duration: response.data.items[0].contentDetails.duration.replace("PT", "").replace("M", ":").replace("S", "")});
+     var durarionMinSec = response.data.items[0].contentDetails.duration.replace("PT", "").replace("M", ":").replace("S", "")
+     this.setState({duration: durarionMinSec});
    } else {
      this.setState({duration: ""});
    }
@@ -29,6 +30,7 @@ class Singlevideo extends Component {
       <div className="single-video-component" >
       <img className="img-thumbnail img-custom" onClick={()=>{this.props.methodSelectVideo(this.props.video)}} alt=""src={`http://img.youtube.com/vi/${this.props.video.videoId}/0.jpg`}></img>
       <p>{this.props.video.title} - {this.state.duration} min</p>
+      <p></p>
       </div>
     )
   }
