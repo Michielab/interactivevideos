@@ -11,7 +11,6 @@ class Allvideos extends Component {
       media: [],
       selectedVideo: {}
     };
-
     this.selectVideo = this.selectVideo.bind(this);
   }
 
@@ -28,17 +27,21 @@ selectVideo(video){
   this.setState({selectedVideo: video});
 }
 
+
   render () {
     return (
       <div className="row" >
-        <div className="col-md-4" >
-          {this.state.media.map(video=>
-            {if(video.videoId !== "D8UQJIjcZfA"){
+        <div className="col-md-3 scrolling-videolist" >
+          <img alt="" id="edpuzzle" src="http://localhost:4000/images/edpuzzle.png"></img>
+          {this.state.media.map((video)=>{
+            {if(video.videoId !== "D8UQJIjcZf"){
           return <Singlevideo key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
           }}
-        )}
-      </div>
-        <Playvideo className="col-md-8"  className="center" video={this.state.selectedVideo} />
+        })}
+        </div>
+        <div className="col-md-9 col-videoplayer">
+          <Playvideo  video={this.state.selectedVideo} />
+        </div>
     </div>
     )
 

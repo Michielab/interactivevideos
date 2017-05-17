@@ -1,48 +1,65 @@
 import React, { Component } from 'react';
 import YouTube from 'react-youtube';
+import { Button,Modal } from 'react-bootstrap';
 
-  var countSeconds;
+var countSeconds;
 class Playvideo extends Component {
   constructor(props) {
     super(props);
 this._onPlay = this._onPlay.bind(this);
-// this._onReady = this._onReady.bind(this);
+this.showModal = this.showModal.bind(this);
+this.hideModal = this.hideModal.bind(this);
+
+this.state = {
+  show: false
+};
   }
-
-
-// _onReady(event) {
-// if(this.props.video.questions[0].time == 0) {alert(this.props.video.questions[0].questionId.body)};
-//   }
 
 _onPlay(event) {
   countSeconds = setInterval(()=>{
     this.props.video.questions.forEach((question)=>{
-        console.log(question.time);
-        if(Math.round(event.target.getCurrentTime()) === question.time) {
-            console.log(event);
+        if(Math.round(event.target.getCurrentTime() - 1) === question.time) {
             event.target.pauseVideo();
-            alert(question.questionId.body);
+            this.showModal();
+            document.getElementById("question").innerHTML =  question.questionId.body;
         }
-      })
+      });
 },1000);
 }
 
-_onPause(event) {
- clearInterval(countSeconds);
-}
+showModal() {
+   this.setState({show: true});
+ }
+
+ hideModal() {
+   this.setState({show: false});
+ }
+
+ _onStateChange(event){
+  if(event.target.getCurrentState !== 1){
+     clearInterval(countSeconds);
+      }
+  }
 
 
   render () {
-    const opts = {
-      height: '390',
-      width: '640'
-    };
-
+    document.getElementById("title").innerHTML =  this.props.video.title;
     return (
-      <div>
-        <YouTube videoId={this.props.video.videoId} opts={opts} onPause={this._onPause} onPlay={this._onPlay}/>
-      <h3>{this.props.video.author} - {this.props.video.title}</h3>
-    </div>
+      <div className="playvideo-component">
+        <Modal show={this.state.show} onHide={this.hideModal} dialogClassName="custom-modal">
+          <Modal.Header closeButton>
+             <Modal.Title id="contained-modal-title-lg">Question time!!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+              <h4 id="question"></h4>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.hideModal}>Ok!</Button>
+          </Modal.Footer>
+        </Modal>
+        <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
+        <h3 className="title-video-player">{this.props.video.author} - {this.props.video.title}</h3>
+     </div>
     )
   }
 }

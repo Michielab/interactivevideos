@@ -1,11 +1,64 @@
-img{
-  width: 320px;
-  height: 210px;
+p{
+  width: 80%;
+  padding-top: 5%;
 }
 
-.center {
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
+.container-fluid{
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.scrolling-videolist{
+  height: 100vh;
+  overflow:auto;
+  background-color: #3a5370;
+  color: white;
+  padding-left: 3vw;
+  padding-top: 5vh;
+}
+
+.col-videoplayer{
+  background-color: #eeeeee;
+  height: 100vh;
+}
+
+.single-video-component{
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.img-thumbnail {
+ border-color: #eeeeee;
+}
+
+.img-custom{
+  width: 80%;
+  height: 80%;
+  border-color: #eeeeee;
+}
+
+#edpuzzle{
+ padding-bottom: 5%;
+}
+
+.playvideo-component{
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.video-player{
+ padding-top: 13%;
+ height: 70%;
+ width: 90%;
+ margin: 0 auto;
+}
+
+.title-video-player{
+  padding-top: 3%;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.custom-modal{
+  padding-top: 10%;
 }
