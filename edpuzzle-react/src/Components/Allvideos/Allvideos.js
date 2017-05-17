@@ -14,18 +14,18 @@ class Allvideos extends Component {
     this.selectVideo = this.selectVideo.bind(this);
   }
 
-//get all the video's with GET request to API
-componentWillMount(){
-  axios.get("http://localhost:4000/media").then(response => {
-    this.setState({ media: response.data.media, selectedVideo: response.data.media[0]});
-  })
-  .catch(function(error){console.log(error);});
-}
+  //get all the video's with GET request to API
+  componentWillMount(){
+    axios.get("http://localhost:4000/media").then(response => {
+      this.setState({ media: response.data.media, selectedVideo: response.data.media[0]});
+    })
+    .catch(function(error){console.log(error);});
+  }
 
-// method to select video
-selectVideo(video){
-  this.setState({selectedVideo: video});
-}
+  // method to select video to play
+  selectVideo(video){
+    this.setState({selectedVideo: video});
+  }
 
 
   render () {
@@ -34,15 +34,13 @@ selectVideo(video){
         <div className="col-md-3 scrolling-videolist" >
           <img alt="" id="edpuzzle" src="http://localhost:4000/images/edpuzzle.png"></img>
           {this.state.media.map((video)=>{
-            {if(video.videoId !== "D8UQJIjcZf"){
-          return <Singlevideo key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
-          }}
-        })}
+            return <Singlevideo key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
+          })}
         </div>
         <div className="col-md-9 col-videoplayer">
           <Playvideo  video={this.state.selectedVideo} />
         </div>
-    </div>
+      </div>
     )
 
   }
