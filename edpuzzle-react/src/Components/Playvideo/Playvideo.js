@@ -78,8 +78,8 @@ class Playvideo extends Component {
             <Button onClick={this.hideModal}>Ok!</Button>
           </Modal.Footer>
         </Modal>
-        <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
-        <h3 className="title-video-player">{this.props.video.author} - {this.props.video.title}</h3>
+          <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
+        <h4 className="title-video-player">{this.props.video.author} - {this.props.video.title}</h4>
         <button id="shareVideoButton" onClick={this.getLink}>Share video</button>
         <input className="hidden" data="hidden" id="linkUrl"></input>
       </div>

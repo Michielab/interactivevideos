@@ -34,13 +34,13 @@ class Allvideos extends Component {
   render () {
     return (
       <div className="row" >
-        <div className="col-sm-9 col-videoplayer">
+        <div className="col-sm-12 col-md-9 col-videoplayer">
           <Playvideo  video={this.state.selectedVideo} />
         </div>
-        <div className="col-sm-3 scrolling-videolist" >
+        <div className="col-sm-12 col-md-3 scrolling-videolist" >
           <img alt="" id="edpuzzle" src="http://localhost:4000/images/edpuzzle.png"></img>
           {this.state.media.map((video)=>{
-            return <Singlevideo key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
+            return <Singlevideo clasName="single-video-component" key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
           })}
         </div>
       </div>
