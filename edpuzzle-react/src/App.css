@@ -1,7 +1,9 @@
 /*General CSS*/
-.container-fluid{
+.container-fluid {
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  /*max-width: 1440px;*/
 }
+
 
 /*Allvideo component CSS*/
 .col-videoplayer{
