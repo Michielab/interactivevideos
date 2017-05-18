@@ -48,14 +48,22 @@ class Playvideo extends Component {
 
 //method to get a shareable link of the current video;
   getLink(){
-    console.log(document.getElementById("linkUrl").class);
-    document.getElementById("linkUrl").setAttribute("class", "");
-    var videoId = this.props.video.videoId;
-    var URLlink = `https://www.youtube.com/watch?v=${videoId}`
-    document.getElementById("linkUrl").value = URLlink;
-    document.getElementById("linkUrl").select();
+
+    // document.getElementById("linkUrl").setAttribute("data", "test")
+    if(document.getElementById("linkUrl").getAttribute('data') === "hidden") {
+      document.getElementById("linkUrl").setAttribute("class", "");
+      document.getElementById("linkUrl").setAttribute("data", "");
+      var videoId = this.props.video.videoId;
+      var URLlink = `https://www.youtube.com/watch?v=${videoId}`
+      document.getElementById("linkUrl").value = URLlink;
+      document.getElementById("linkUrl").select();
+    } else{
+      document.getElementById("linkUrl").setAttribute("data", "hidden");
+    }
+
   }
 
+test
 
   render () {
     document.getElementById("title").innerHTML =  this.props.video.title;
@@ -75,7 +83,7 @@ class Playvideo extends Component {
         <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
         <h3 className="title-video-player">{this.props.video.author} - {this.props.video.title}</h3>
         <button id="shareVideoButton" onClick={this.getLink}>Share video</button>
-        <input className="hidden" id="linkUrl"></input>
+        <input className="hidden" data="hidden" id="linkUrl"></input>
       </div>
     )
   }
