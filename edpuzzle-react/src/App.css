@@ -1,10 +1,12 @@
-p{
-  width: 80%;
-  padding-top: 5%;
-}
-
+/*General CSS*/
 .container-fluid{
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+/*Allvideo component CSS*/
+.col-videoplayer{
+  background-color: #eeeeee;
+  height: 100vh;
 }
 
 .scrolling-videolist{
@@ -16,14 +18,19 @@ p{
   padding-top: 5vh;
 }
 
-.col-videoplayer{
-  background-color: #eeeeee;
-  height: 100vh;
+#edpuzzle{
+  padding-bottom: 5%;
 }
 
+/*Singlevideo component CSS*/
 .single-video-component{
   padding-top: 3%;
   padding-bottom: 3%;
+}
+
+#titleSingleVideo{
+  width: 80%;
+  padding-top: 5%;
 }
 
 .img-thumbnail {
@@ -36,10 +43,7 @@ p{
   border-color: #eeeeee;
 }
 
-#edpuzzle{
-  padding-bottom: 5%;
-}
-
+/*Playvideo component CSS*/
 .playvideo-component{
   width: 80%;
   height: 100%;
@@ -75,4 +79,46 @@ p{
 #linkUrl{
   width: 33%;
   border-color: #eeeeee;
+}
+
+/*response CSS*/
+@media (max-width: 768px){
+/*Allvideo component CSS*/
+.scrolling-videolist{
+  height: 100%;
+  overflow: visible;
+  background-color: #3a5370;
+  color: white;
+  padding-left: 3vw;
+  padding-top: 5vh;
+}
+
+/*Singlevideo component CSS*/
+  .img-custom{
+    width: 40%;
+    height: 40%;
+  }
+
+  .single-video-component{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 20%
+  }
+
+
+/*Playvideo component CSS*/
+  .title-video-player{
+    font-size: 18px;
+  }
+
+  #shareVideoButton{
+    font-size: 10px;
+
+  }
+
+  #titleSingleVideo{
+    width: 40%;
+    padding-top: 3%;
+  }
+
 }

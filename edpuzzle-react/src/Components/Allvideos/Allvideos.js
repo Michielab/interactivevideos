@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Singlevideo from '../Singlevideo/Singlevideo'
 import Playvideo from '../Playvideo/Playvideo'
+import PropTypes from 'prop-types';
+
 
 class Allvideos extends Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class Allvideos extends Component {
     .catch(function(error){console.log(error);});
   }
 
+
   // method to select video to play
   selectVideo(video){
     this.setState({selectedVideo: video});
@@ -31,14 +34,14 @@ class Allvideos extends Component {
   render () {
     return (
       <div className="row" >
-        <div className="col-md-3 scrolling-videolist" >
+        <div className="col-sm-9 col-videoplayer">
+          <Playvideo  video={this.state.selectedVideo} />
+        </div>
+        <div className="col-sm-3 scrolling-videolist" >
           <img alt="" id="edpuzzle" src="http://localhost:4000/images/edpuzzle.png"></img>
           {this.state.media.map((video)=>{
             return <Singlevideo key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
           })}
-        </div>
-        <div className="col-md-9 col-videoplayer">
-          <Playvideo  video={this.state.selectedVideo} />
         </div>
       </div>
     )

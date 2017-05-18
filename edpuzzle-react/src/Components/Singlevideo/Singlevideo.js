@@ -30,8 +30,7 @@ class Singlevideo extends Component {
     return (
       <div className="single-video-component" >
         <img className="img-thumbnail img-custom" onClick={()=>{this.props.methodSelectVideo(this.props.video)}} alt=""src={`http://img.youtube.com/vi/${this.props.video.videoId}/0.jpg`}></img>
-        <p>{this.props.video.title} - {this.state.duration} min</p>
-        <p></p>
+        <p id="titleSingleVideo">{this.props.video.title} - {this.state.duration} min</p>
       </div>
     )
   }

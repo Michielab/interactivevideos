@@ -15,6 +15,7 @@ class Playvideo extends Component {
     };
   }
 
+//method that is called when the user plays a video;
   _onPlay(event) {
     countSeconds = setInterval(()=>{
       this.props.video.questions.forEach((question)=>{
@@ -27,15 +28,17 @@ class Playvideo extends Component {
     },1000);
   }
 
-
+//method that shows the questionModal;
   showModal() {
     this.setState({showModal: true});
   }
 
+//method that hids the questionModal;
   hideModal() {
     this.setState({showModal: false});
   }
 
+//method that is called when the state of the videoPlayer changes;
   _onStateChange(event){
     document.getElementById("linkUrl").setAttribute("class", "hidden");
     if(event.target.getCurrentState !== 1){
@@ -43,6 +46,7 @@ class Playvideo extends Component {
     }
   }
 
+//method to get a shareable link of the current video;
   getLink(){
     document.getElementById("linkUrl").setAttribute("class", "");
     var videoId = this.props.video.videoId;
@@ -50,7 +54,6 @@ class Playvideo extends Component {
     document.getElementById("linkUrl").value = URLlink;
     document.getElementById("linkUrl").select();
   }
-
 
 
   render () {
