@@ -27,7 +27,7 @@ p{
 }
 
 .img-thumbnail {
- border-color: #eeeeee;
+  border-color: #eeeeee;
 }
 
 .img-custom{
@@ -37,7 +37,7 @@ p{
 }
 
 #edpuzzle{
- padding-bottom: 5%;
+  padding-bottom: 5%;
 }
 
 .playvideo-component{
@@ -47,18 +47,32 @@ p{
 }
 
 .video-player{
- padding-top: 13%;
- height: 70%;
- width: 90%;
- margin: 0 auto;
+  padding-top: 13%;
+  height: 70%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .title-video-player{
+  color: #3a5370;
   padding-top: 3%;
   width: 60%;
   margin: 0 auto;
+  style: bold;
 }
 
 .custom-modal{
   padding-top: 10%;
+}
+
+#shareVideoButton{
+  display: inline;
+  font-family: inherit;
+  background-color: #3a5370;
+  color: white;
+}
+
+#linkUrl{
+  width: 33%;
+  border-color: #eeeeee;
 }

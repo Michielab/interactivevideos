@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import YouTube from 'react-youtube';
-import { Button,Modal } from 'react-bootstrap';
+import { Button,Modal} from 'react-bootstrap';
 
 var countSeconds;
 class Playvideo extends Component {
@@ -27,29 +27,31 @@ class Playvideo extends Component {
     },1000);
   }
 
+
+  showModal() {
+    this.setState({showModal: true});
+  }
+
   hideModal() {
     this.setState({showModal: false});
   }
 
   _onStateChange(event){
+    document.getElementById("linkUrl").setAttribute("class", "hidden");
     if(event.target.getCurrentState !== 1){
       clearInterval(countSeconds);
     }
   }
 
   getLink(){
-        console.log(this.state.showModal);
-        this.showModal()
-            console.log(this.state.showModal);
+    document.getElementById("linkUrl").setAttribute("class", "");
     var videoId = this.props.video.videoId;
-    document.getElementById("question1").innerHTML =  `https://www.youtube.com/watch?v=${videoId}`;
+    var URLlink = `https://www.youtube.com/watch?v=${videoId}`
+    document.getElementById("linkUrl").value = URLlink;
+    document.getElementById("linkUrl").select();
   }
 
 
-    showModal() {
-      this.setState({showModal: true});
-      console.log(this.state.showModal);
-    }
 
   render () {
     document.getElementById("title").innerHTML =  this.props.video.title;
@@ -68,8 +70,8 @@ class Playvideo extends Component {
         </Modal>
         <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
         <h3 className="title-video-player">{this.props.video.author} - {this.props.video.title}</h3>
-        <Button onClick={this.getLink}>Share video</Button>
-          <h4 id="question1"></h4>
+        <button id="shareVideoButton" onClick={this.getLink}>Share video</button>
+        <input className="hidden" id="linkUrl"></input>
       </div>
     )
   }
