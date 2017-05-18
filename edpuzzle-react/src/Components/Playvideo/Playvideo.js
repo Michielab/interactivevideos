@@ -48,6 +48,7 @@ class Playvideo extends Component {
 
 //method to get a shareable link of the current video;
   getLink(){
+    console.log(document.getElementById("linkUrl").class);
     document.getElementById("linkUrl").setAttribute("class", "");
     var videoId = this.props.video.videoId;
     var URLlink = `https://www.youtube.com/watch?v=${videoId}`
