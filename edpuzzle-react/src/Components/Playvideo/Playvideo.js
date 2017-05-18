@@ -63,8 +63,6 @@ class Playvideo extends Component {
 
   }
 
-test
-
   render () {
     document.getElementById("title").innerHTML =  this.props.video.title;
     return (
