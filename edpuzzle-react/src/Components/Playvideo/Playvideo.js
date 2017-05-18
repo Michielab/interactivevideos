@@ -15,7 +15,9 @@ class Playvideo extends Component {
     };
   }
 
-//method that is called when the user plays a video;
+/*method that is called when the user starts a video. A set interval is set to check the current playtime
+of the video in order to see if a question should pop-up. This is done by looping over the questions array of
+the current video, and comparing the times*/
   _onPlay(event) {
     countSeconds = setInterval(()=>{
       this.props.video.questions.forEach((question)=>{
@@ -28,17 +30,18 @@ class Playvideo extends Component {
     },1000);
   }
 
-//method that shows the questionModal;
+/*method that when called shows the questionModal, where the interacitve question is displayed*/
   showModal() {
     this.setState({showModal: true});
   }
 
-//method that hids the questionModal;
+/*method that when calles hide's the questionModal, where the interacitve question is displayed*/
   hideModal() {
     this.setState({showModal: false});
   }
 
-//method that is called when the state of the videoPlayer changes;
+/*method that is called when the state of the videoPlayer changes,
+set's URL input to hidden, and clears the interval if the video is not playing*/
   _onStateChange(event){
     document.getElementById("linkUrl").setAttribute("class", "hidden");
     if(event.target.getCurrentState !== 1){
@@ -46,19 +49,16 @@ class Playvideo extends Component {
     }
   }
 
-//method to get a shareable link of the current video;
+/*method to get a shareable link of the current video, to set the URL value in the input field, and
+show/hide the input elementL*/
   getLink(){
-
-    // document.getElementById("linkUrl").setAttribute("data", "test")
-    if(document.getElementById("linkUrl").getAttribute('data') === "hidden") {
-      document.getElementById("linkUrl").setAttribute("class", "");
-      document.getElementById("linkUrl").setAttribute("data", "");
-      var videoId = this.props.video.videoId;
-      var URLlink = `https://www.youtube.com/watch?v=${videoId}`
+    if(document.getElementById("linkUrl").getAttribute('class') === "hidden"){
+      document.getElementById("linkUrl").setAttribute("class", "show");
+      var URLlink = `https://www.youtube.com/watch?v=${this.props.video.videoId}`
       document.getElementById("linkUrl").value = URLlink;
       document.getElementById("linkUrl").select();
-    } else{
-      document.getElementById("linkUrl").setAttribute("data", "hidden");
+    } else {
+      document.getElementById("linkUrl").setAttribute("class", "hidden");
     }
 
   }
@@ -81,7 +81,7 @@ class Playvideo extends Component {
           <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
         <h4 className="title-video-player">{this.props.video.author} - {this.props.video.title}</h4>
         <button id="shareVideoButton" onClick={this.getLink}>Share video</button>
-        <input className="hidden" data="hidden" id="linkUrl"></input>
+        <input className="hidden" id="linkUrl"></input>
       </div>
     )
   }

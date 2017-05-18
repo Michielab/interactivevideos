@@ -7,24 +7,26 @@ class Singlevideo extends Component {
 
     this.state = {
       duration: String,
-      curroptVideo: false,
+      corruptVideo: false,
     };
   }
 
-  //get request to API to get the time of the video, and checking if the video is there;
+
+  /*get request to the API to get the playtime of the video, this time is stored in the state,
+  if the items array in the response is empty the video is corrupt*/
   componentWillMount(){
     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${this.props.video.videoId}&key=AIzaSyCxMMKO3pvhEwyCb6XzpvyyA7mT7W5HxNE&part=snippet,contentDetails,statistics,status`).then(response => {
       if(response.data.items.length !== 0){
         var durarionMinSec = response.data.items[0].contentDetails.duration.replace("PT", "").replace("M", ":").replace("S", "");
         this.setState({duration: durarionMinSec});
       } else {
-        this.setState({curroptVideo: true});
+        this.setState({corruptVideo: true});
       }
     });
   }
 
   render () {
-    if (this.state.curroptVideo === true) {
+    if (this.state.corruptVideo === true) {
       return <div></div>
     }
     return (

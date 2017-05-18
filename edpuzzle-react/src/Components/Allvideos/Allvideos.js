@@ -16,7 +16,7 @@ class Allvideos extends Component {
     this.selectVideo = this.selectVideo.bind(this);
   }
 
-  //get all the video's with GET request to API
+  /*get all the video's with GET request to API, and stored in state*/
   componentWillMount(){
     axios.get("http://localhost:4000/media").then(response => {
       this.setState({ media: response.data.media, selectedVideo: response.data.media[0]});
@@ -25,7 +25,7 @@ class Allvideos extends Component {
   }
 
 
-  // method to select video to play
+  /*method to select en store the selected video*/
   selectVideo(video){
     this.setState({selectedVideo: video});
   }

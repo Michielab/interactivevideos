@@ -5,8 +5,10 @@
 .col-videoplayer{
   background-color: #eeeeee;
 }
-/* FIRST: Under this comment you put everything that pertains to mobile aka 'responsive' layout
+
+/*
 This part applies to 0px to 992 px */
+
 /*Allvideo component CSS*/
 .scrolling-videolist{
   height: 100vh;
@@ -32,16 +34,16 @@ This part applies to 0px to 992 px */
 
 /*Playvideo component CSS*/
 .video-player{
- padding-top: 1%;
- padding-left: 2%;
- width: 100%;
+  padding-top: 1%;
+  padding-left: 2%;
+  width: 100%;
 }
 
 .title-video-player{
   color: #3a5370;
-  line-height: 6vh;
+  line-height: 4vh;
   width: 80%;
-  margin: 0 auto;
+  margin-left: 2%;
   font-size: 20px;
   font-weight: bold;
 }
@@ -64,6 +66,7 @@ This part applies to 0px to 992 px */
 
 
 @media (min-width: 992px){
+  /*Allvideo component CSS*/
   .col-videoplayer{
     height: 100vh;
   }
@@ -76,11 +79,13 @@ This part applies to 0px to 992 px */
     margin: 0 auto;
   }
 
+  /*Singlevideo component CSS*/
   .single-video{
     padding-top: 8%;
   }
 
   #titleSingleVideo{
+    padding-top: 1%;
     text-align: center;
     line-height: 4vh;
     margin: 0 auto;
@@ -103,10 +108,10 @@ This part applies to 0px to 992 px */
 
   .title-video-player{
     color: #3a5370;
-    padding-top: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     line-height: 4vh;
-    width: 60%;
-    margin: 0 auto;
+    margin-left: 2%;
     font-size: 24px;
     font-weight: bold;
   }
@@ -124,9 +129,9 @@ This part applies to 0px to 992 px */
   }
 
   #linkUrl{
+    padding-left: 2%;
     width: 35%;
     background-color: #eeeeee;
   }
 
-	}
-/*Allvideo component CSS*/
+}
