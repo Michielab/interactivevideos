@@ -4,67 +4,50 @@
   /*max-width: 1440px;*/
 }
 
-
-/*Allvideo component CSS*/
 .col-videoplayer{
   background-color: #eeeeee;
-  height: 100vh;
 }
 
+/*
+This part applies to 0px to 992 px */
+
+/*Allvideo component CSS*/
 .scrolling-videolist{
   height: 100vh;
   overflow:auto;
   background-color: #3a5370;
   color: white;
-  padding-left: 3vw;
-  padding-top: 5vh;
-}
-
-#edpuzzle{
-  padding-bottom: 5%;
+  margin: 0 auto;
 }
 
 /*Singlevideo component CSS*/
-.single-video-component{
-  padding-top: 3%;
-  padding-bottom: 3%;
+.img-custom {
+  display: block;
+  border-color: #eeeeee;
+  margin: 0 auto;
 }
 
 #titleSingleVideo{
-  width: 80%;
-  padding-top: 5%;
-}
-
-.img-thumbnail {
-  border-color: #eeeeee;
-}
-
-.img-custom{
-  width: 80%;
-  height: 80%;
-  border-color: #eeeeee;
+  text-align: center;
+  line-height: 6vh;
+  margin: 0 auto;
+  font-size: 16px;
 }
 
 /*Playvideo component CSS*/
-.playvideo-component{
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
-}
-
 .video-player{
-  padding-top: 13%;
-  height: 70%;
-  width: 90%;
-  margin: 0 auto;
+  padding-top: 1%;
+  padding-left: 2%;
+  width: 100%;
 }
 
 .title-video-player{
   color: #3a5370;
-  padding-top: 3%;
-  width: 60%;
-  margin: 0 auto;
-  style: bold;
+  line-height: 4vh;
+  width: 80%;
+  margin-left: 2%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .custom-modal{
@@ -72,55 +55,85 @@
 }
 
 #shareVideoButton{
-  display: inline;
   font-family: inherit;
   background-color: #3a5370;
+  margin-left: 2%;
   color: white;
 }
 
 #linkUrl{
-  width: 33%;
-  border-color: #eeeeee;
+  width: 50%;
+  background-color: #eeeeee;
 }
 
-/*response CSS*/
-@media (max-width: 768px){
-/*Allvideo component CSS*/
-.scrolling-videolist{
-  height: 100%;
-  overflow: visible;
-  background-color: #3a5370;
-  color: white;
-  padding-left: 3vw;
-  padding-top: 5vh;
-}
 
-/*Singlevideo component CSS*/
-  .img-custom{
-    width: 40%;
-    height: 40%;
+@media (min-width: 992px){
+  /*Allvideo component CSS*/
+  .col-videoplayer{
+    height: 100vh;
   }
 
-  .single-video-component{
-    padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 20%
+  .scrolling-videolist{
+    height: 100vh;
+    overflow:auto;
+    background-color: #3a5370;
+    color: white;
+    margin: 0 auto;
   }
 
-
-/*Playvideo component CSS*/
-  .title-video-player{
-    font-size: 18px;
-  }
-
-  #shareVideoButton{
-    font-size: 10px;
-
+  /*Singlevideo component CSS*/
+  .single-video{
+    padding-top: 8%;
   }
 
   #titleSingleVideo{
-    width: 40%;
-    padding-top: 3%;
+    padding-top: 1%;
+    text-align: center;
+    line-height: 4vh;
+    margin: 0 auto;
+    font-size: 18px;
+  }
+
+  /*Playvideo component CSS*/
+  .playvideo-component{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .video-player{
+    padding-top: 9%;
+    height: 70%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .title-video-player{
+    color: #3a5370;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    line-height: 4vh;
+    margin-left: 2%;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .custom-modal{
+    padding-top: 15%;
+  }
+
+  #shareVideoButton{
+    font-family: inherit;
+    font-size: 16px;
+    margin-left: 2%;
+    background-color: #3a5370;
+    color: white;
+  }
+
+  #linkUrl{
+    margin-left: 2%;
+    width: 35%;
+    background-color: #eeeeee;
   }
 
 }
