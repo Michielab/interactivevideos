@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import PropTypes from 'prop-types';
 
 class Singlevideo extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Singlevideo extends Component {
 
   render () {
     if (this.state.corruptVideo === true) {
-      return <div></div>
+      return null;
     }
     return (
       <div className="single-video" >
@@ -35,7 +36,12 @@ class Singlevideo extends Component {
         <p id="titleSingleVideo">{this.props.video.title} - {this.state.duration} min</p>
       </div>
     )
-  }
+  } 
 }
+
+Singlevideo.propTypes = {
+  video: PropTypes.object,
+};
+
 
 export default Singlevideo;

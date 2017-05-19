@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import YouTube from 'react-youtube';
 import { Button,Modal} from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 var countSeconds;
 class Playvideo extends Component {
@@ -15,9 +16,10 @@ class Playvideo extends Component {
     };
   }
 
-/*method that is called when the user starts a video. A set interval is set to check the current playtime
-of the video in order to see if a question should pop-up. This is done by looping over the questions array of
-the current video, and comparing the times*/
+
+  /*method that is called when the user starts a video. A set interval is set to check the current playtime
+  of the video in order to see if a question should pop-up. This is done by looping over the questions array of
+  the current video, and comparing the times*/
   _onPlay(event) {
     countSeconds = setInterval(()=>{
       this.props.video.questions.forEach((question)=>{
@@ -30,18 +32,18 @@ the current video, and comparing the times*/
     },1000);
   }
 
-/*method that when called shows the questionModal, where the interacitve question is displayed*/
+  /*method that when called shows the questionModal, where the interacitve question is displayed*/
   showModal() {
     this.setState({showModal: true});
   }
 
-/*method that when calles hide's the questionModal, where the interacitve question is displayed*/
+  /*method that when calles hide's the questionModal, where the interacitve question is displayed*/
   hideModal() {
     this.setState({showModal: false});
   }
 
-/*method that is called when the state of the videoPlayer changes,
-set's URL input to hidden, and clears the interval if the video is not playing*/
+  /*method that is called when the state of the videoPlayer changes,
+  set's URL input to hidden, and clears the interval if the video is not playing*/
   _onStateChange(event){
     document.getElementById("linkUrl").setAttribute("class", "hidden");
     if(event.target.getCurrentState !== 1){
@@ -49,8 +51,8 @@ set's URL input to hidden, and clears the interval if the video is not playing*/
     }
   }
 
-/*method to get a shareable link of the current video, to set the URL value in the input field, and
-show/hide the input elementL*/
+  /*method to get a shareable link of the current video, to set the URL value in the input field, and
+  show/hide the input elementL*/
   getLink(){
     if(document.getElementById("linkUrl").getAttribute('class') === "hidden"){
       document.getElementById("linkUrl").setAttribute("class", "show");
@@ -77,7 +79,7 @@ show/hide the input elementL*/
             <Button onClick={this.hideModal}>Ok!</Button>
           </Modal.Footer>
         </Modal>
-          <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
+        <YouTube className="video-player" videoId={this.props.video.videoId} onStateChange={this._onStateChange} onPlay={this._onPlay}/>
         <h4 className="title-video-player">{this.props.video.author} - {this.props.video.title}</h4>
         <button id="shareVideoButton" onClick={this.getLink}>Share video</button>
         <input className="hidden" id="linkUrl"></input>
@@ -85,5 +87,9 @@ show/hide the input elementL*/
     )
   }
 }
+
+Playvideo.propTypes = {
+  video: PropTypes.object,
+};
 
 export default Playvideo;

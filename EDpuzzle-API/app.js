@@ -1,21 +1,21 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://developer:edpuzzle@candidate.63.mongolayer.com:10327,candidate.64.mongolayer.com:10154/developer-test-michiel?replicaSet=set-56aa50c0ad4b0861c2000532');
 
 
-var media = require('./routes/media');
+const media = require('./routes/media');
 
-var app = express();
+const app = express();
 
 
-var cors = require('cors');
-var corsOptions = {credentials: true, origin: 'http://localhost:3000'};
+const cors = require('cors');
+const corsOptions = {credentials: true, origin: 'http://localhost:3000'};
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 

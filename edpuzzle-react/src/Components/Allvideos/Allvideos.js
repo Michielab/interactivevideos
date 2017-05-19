@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Singlevideo from '../Singlevideo/Singlevideo'
 import Playvideo from '../Playvideo/Playvideo'
-import PropTypes from 'prop-types';
 
 
 class Allvideos extends Component {
