@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://developer:edpuzzle@candidate.63.mongolayer.com:10327,candidate.64.mongolayer.com:10154/developer-test-michiel?replicaSet=set-56aa50c0ad4b0861c2000532');
+mongoose.connect("mongodb://localhost:27017/interActiveVideos");
 
 
 const media = require('./routes/media');

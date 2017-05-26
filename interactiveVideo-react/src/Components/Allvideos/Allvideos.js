@@ -24,7 +24,7 @@ class Allvideos extends Component {
   }
 
 
-  /*method to select en store the selected video*/
+  /*method to select and store the selected video*/
   selectVideo(video){
     this.setState({selectedVideo: video});
   }
@@ -37,7 +37,6 @@ class Allvideos extends Component {
           <Playvideo  video={this.state.selectedVideo} />
         </div>
         <div className="col-sm-12 col-md-3 scrolling-videolist" >
-          <img alt="" id="edpuzzle" src="http://localhost:4000/images/edpuzzle.png"></img>
           {this.state.media.map((video)=>{
             return <Singlevideo clasName="single-video-component" key={video._id} video={video} methodSelectVideo={this.selectVideo}/>
           })}
